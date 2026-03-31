@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import './Projects.css';
 
 const projects = [
@@ -63,15 +64,67 @@ function GitHubIcon() {
   );
 }
 
+const allTags = [...new Set(projects.flatMap((p) => p.tags))];
+
+function getFocusParam() {
+  return new URLSearchParams(window.location.search).get('focus') || 'All';
+}
+
+function setFocusParam(tag) {
+  const params = new URLSearchParams(window.location.search);
+  if (tag === 'All') {
+    params.delete('focus');
+  } else {
+    params.set('focus', tag);
+  }
+  const query = params.toString();
+  window.history.replaceState(null, '', query ? `?${query}` : window.location.pathname);
+}
+
 export default function Projects() {
+  const [activeTag, setActiveTag] = useState(getFocusParam);
+
+  useEffect(() => {
+    const onPop = () => setActiveTag(getFocusParam());
+    window.addEventListener('popstate', onPop);
+    return () => window.removeEventListener('popstate', onPop);
+  }, []);
+
+  function selectTag(tag) {
+    setActiveTag(tag);
+    setFocusParam(tag);
+  }
+
+  const filtered = activeTag === 'All'
+    ? projects
+    : projects.filter((p) => p.tags.includes(activeTag));
+
   return (
     <section id="projects" className="projects">
       <div className="container">
         <h2 className="section-title">Featured <span className="accent">Projects</span></h2>
         <p className="section-subtitle">Things I've built</p>
 
+        <div className="projects__filters">
+          <button
+            className={`filter-btn${activeTag === 'All' ? ' filter-btn--active' : ''}`}
+            onClick={() => selectTag('All')}
+          >
+            All
+          </button>
+          {allTags.map((tag) => (
+            <button
+              key={tag}
+              className={`filter-btn${activeTag === tag ? ' filter-btn--active' : ''}`}
+              onClick={() => selectTag(tag)}
+            >
+              {tag}
+            </button>
+          ))}
+        </div>
+
         <div className="projects__grid">
-          {projects.map((project) => (
+          {filtered.map((project) => (
             <article key={project.title} className="project-card">
               <div className="project-card__top">
                 <div className="project-card__folder">
@@ -94,7 +147,9 @@ export default function Projects() {
               <p className="project-card__desc">{project.description}</p>
               <ul className="project-card__tags">
                 {project.tags.map((tag) => (
-                  <li key={tag}>{tag}</li>
+                  <li key={tag} onClick={() => selectTag(tag)} className="project-card__tag">
+                    {tag}
+                  </li>
                 ))}
               </ul>
             </article>
