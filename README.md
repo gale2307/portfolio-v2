@@ -1,2 +1,3 @@
-# portfolio-updated
+# portfolio
 
+Personal portfolio made with React.

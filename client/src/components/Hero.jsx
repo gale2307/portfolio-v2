@@ -7,13 +7,13 @@ export default function Hero() {
       <div className="hero__bg-glow" aria-hidden="true" />
       <div className="container hero__content fade-in-up">
         <p className="hero__greeting">Hi, I'm</p>
-        <h1 className="hero__name">Your Name</h1>
+        <h1 className="hero__name">Nicholas Hadiwijaya</h1>
         <h2 className="hero__role">
-          Full-Stack <span className="accent">Developer</span>
+          Software <span className="accent">Engineer</span>
         </h2>
         <p className="hero__desc">
-          I build fast, accessible, and beautiful web experiences.
-          Passionate about clean code and thoughtful design.
+          4 years building scalable backend systems and microservices for e-commerce and digital banking.
+          Proficient in Golang, Java, and Python. MSc Computer Science (AI) — University of Sydney.
         </p>
         <div className="hero__actions">
           <a href="#projects" className="btn btn-primary">View Projects</a>

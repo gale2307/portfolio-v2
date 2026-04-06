@@ -8,29 +8,14 @@ export default function About() {
           <h2 className="section-title">About <span className="accent">Me</span></h2>
           <p className="section-subtitle">A little background</p>
           <p>
-            I'm a full-stack developer based in [City, Country] with a passion for building
-            products that live on the internet. I love turning complex problems into simple,
-            beautiful, and intuitive designs.
+            I'm a Software Engineer based in Sydney, Australia with 4 years of experience building
+            scalable backend systems and microservices for e-commerce and digital banking platforms.
           </p>
           <p>
-            When I'm not pushing pixels or writing code, you'll find me hiking, reading,
-            or experimenting with new technologies. I'm always open to exciting opportunities
-            and collaborations.
+            I hold a Master of Computer Science (Data Science & AI) from the University of Sydney
+            and a Bachelor of Science in Computer Science from UC Irvine. I'm a fast learner who likes to explore and work with new tech stacks, 
+            which led to a wide variety of projects including fullstack development, mobile development, machine learning, and game development.
           </p>
-          <div className="about__facts">
-            <div className="about__fact">
-              <span className="about__fact-number accent">3+</span>
-              <span>Years Experience</span>
-            </div>
-            <div className="about__fact">
-              <span className="about__fact-number accent">20+</span>
-              <span>Projects Completed</span>
-            </div>
-            <div className="about__fact">
-              <span className="about__fact-number accent">10+</span>
-              <span>Happy Clients</span>
-            </div>
-          </div>
           <a href="/resume.pdf" className="btn btn-outline" download>
             Download Resume
           </a>

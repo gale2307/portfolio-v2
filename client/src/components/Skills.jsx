@@ -2,16 +2,32 @@ import './Skills.css';
 
 const skillGroups = [
   {
-    category: 'Frontend',
-    skills: ['React', 'TypeScript', 'Next.js', 'HTML/CSS', 'Tailwind CSS', 'Redux'],
+    category: 'Languages',
+    skills: ['Golang', 'Java', 'Python', 'JavaScript', 'TypeScript', 'SQL', 'C++', 'C'],
   },
   {
-    category: 'Backend',
-    skills: ['Node.js', 'Express', 'Python', 'REST APIs', 'GraphQL', 'PostgreSQL'],
+    category: 'Backend Frameworks',
+    skills: ['Spring Boot', 'FastAPI', 'Flask'],
   },
   {
-    category: 'Tools & DevOps',
-    skills: ['Git', 'Docker', 'AWS', 'CI/CD', 'Linux', 'Figma'],
+    category: 'Frontend Frameworks',
+    skills: ['React', 'React Native', 'Next.js', 'TypeScript', 'Expo'],
+  },
+  {
+    category: 'Infrastructure',
+    skills: ['GCP', 'AWS', 'Docker', 'Terraform', 'Jenkins'],
+  },
+  {
+    category: 'Databases',
+    skills: ['PostgreSQL', 'MySQL', 'Redis', 'Elasticsearch'],
+  },
+  {
+    category: 'AI & ML',
+    skills: ['Langchain', 'Pytorch'],
+  },
+  {
+    category: 'Tools',
+    skills: ['Git', 'HuggingFace', 'Claude Code'],
   },
 ];
 
