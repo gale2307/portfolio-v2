@@ -22,7 +22,7 @@ export default function Navbar() {
     <header className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
       <nav className="navbar__inner container">
         <a href="#" className="navbar__logo">
-          <span className="accent">&lt;</span>YourName<span className="accent">/&gt;</span>
+          <span className="accent">&lt;</span>NicholasHadiwijaya<span className="accent">/&gt;</span>
         </a>
 
         <ul className={`navbar__links ${menuOpen ? 'navbar__links--open' : ''}`}>

@@ -1,3 +1,4 @@
+import { GITHUB_URL, LINKEDIN_URL } from '../constants';
 import './Hero.css';
 
 export default function Hero() {
@@ -19,10 +20,10 @@ export default function Hero() {
           <a href="#contact" className="btn btn-outline">Get in Touch</a>
         </div>
         <div className="hero__social">
-          <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" aria-label="GitHub">
             <GitHubIcon />
           </a>
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
             <LinkedInIcon />
           </a>
         </div>

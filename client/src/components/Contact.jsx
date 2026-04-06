@@ -1,106 +1,22 @@
-import { useState } from 'react';
+import { EMAIL, LINKEDIN_URL } from '../constants';
 import './Contact.css';
 
-const initialForm = { name: '', email: '', message: '' };
-
 export default function Contact() {
-  const [form, setForm] = useState(initialForm);
-  const [status, setStatus] = useState(null); // 'loading' | 'success' | 'error'
-  const [error, setError] = useState('');
-
-  const handleChange = (e) => {
-    setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setStatus('loading');
-    setError('');
-    try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
-      });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error || 'Something went wrong.');
-      setStatus('success');
-      setForm(initialForm);
-    } catch (err) {
-      setStatus('error');
-      setError(err.message);
-    }
-  };
-
   return (
     <section id="contact" className="contact">
       <div className="container contact__inner">
-        <div className="contact__text">
-          <h2 className="section-title">Get In <span className="accent">Touch</span></h2>
-          <p className="section-subtitle">Let's work together</p>
-          <p>
-            Whether you have a project in mind, a question, or just want to say hi —
-            my inbox is always open. I'll do my best to respond promptly!
-          </p>
-          <div className="contact__info">
-            <a href="mailto:your@email.com" className="contact__info-item">
-              <EmailIcon /> your@email.com
-            </a>
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="contact__info-item">
-              <LinkedInIcon /> linkedin.com/in/yourname
-            </a>
-          </div>
+        <h2 className="section-title">Get In <span className="accent">Touch</span></h2>
+        <p>
+          For any inquiries, feel free to reach out through email or LinkedIn.
+        </p>
+        <div className="contact__info">
+          <a href={`mailto:${EMAIL}`} className="contact__info-item">
+            <EmailIcon /> {EMAIL}
+          </a>
+          <a href={LINKEDIN_URL} target="_blank" rel="noopener noreferrer" className="contact__info-item">
+            <LinkedInIcon /> {LINKEDIN_URL.replace('https://www.', '')}
+          </a>
         </div>
-
-        <form className="contact__form" onSubmit={handleSubmit} noValidate>
-          <div className="form-group">
-            <label htmlFor="name">Name</label>
-            <input
-              id="name"
-              name="name"
-              type="text"
-              value={form.name}
-              onChange={handleChange}
-              placeholder="John Doe"
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="email">Email</label>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              value={form.email}
-              onChange={handleChange}
-              placeholder="john@example.com"
-              required
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="message">Message</label>
-            <textarea
-              id="message"
-              name="message"
-              rows={5}
-              value={form.message}
-              onChange={handleChange}
-              placeholder="Your message..."
-              required
-            />
-          </div>
-
-          {status === 'success' && (
-            <p className="form-success">Message sent! I'll get back to you soon.</p>
-          )}
-          {status === 'error' && (
-            <p className="form-error">{error}</p>
-          )}
-
-          <button type="submit" className="btn btn-primary" disabled={status === 'loading'}>
-            {status === 'loading' ? 'Sending...' : 'Send Message'}
-          </button>
-        </form>
       </div>
     </section>
   );
